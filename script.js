@@ -11,7 +11,8 @@ function multiply(a, b) {
 }
 
 function divide(a, b) {
-  return a / b;
+    if (b === 0) return "Nice try 😏";
+    return a / b;
 }
 
 function operate(operator, a, b) {
@@ -30,6 +31,7 @@ function operate(operator, a, b) {
 let firstNumber = "";
 let operator = "";
 let secondNumber = "";
+let startNewNumber = false;
 
 const clearBtn = document.querySelector(".clear");
 
@@ -45,8 +47,9 @@ const digits = document.querySelectorAll(".digit");
 
 digits.forEach((button) => {
     button.addEventListener("click", () => {
-        if (display.textContent === "0") {
+        if (display.textContent === "0" || startNewNumber) {
             display.textContent = button.textContent;
+            startNewNumber = false;
         } else {
             display.textContent += button.textContent;
         }
@@ -64,7 +67,8 @@ operators.forEach((button) => {
             firstNumber = display.textContent;
         }
         operator = button.textContent;
-        display.textContent = "0";
+        display.textContent = firstNumber;
+        startNewNumber = true;
     });
 });
 
