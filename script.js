@@ -1,13 +1,13 @@
 function add(a, b) {
-  return a + b;
+    return a + b;
 }
 
 function subtract(a, b) {
-  return a - b;
+    return a - b;
 }
 
 function multiply(a, b) {
-  return a * b;
+    return a * b;
 }
 
 function divide(a, b) {
@@ -39,6 +39,7 @@ clearBtn.addEventListener("click", () => {
     firstNumber = "";
     operator = "";
     secondNumber = "";
+    startNewNumber = false;
     display.textContent = "0";
 });
 
@@ -60,6 +61,10 @@ const operators = document.querySelectorAll(".operator");
 
 operators.forEach((button) => {
     button.addEventListener("click", () => {
+        if (startNewNumber && operator !== "") {
+            operator = button.textContent;
+            return;
+        }
         if (operator !== "") {
             const result = operate(operator, Number(firstNumber), Number(display.textContent));
             firstNumber = result;
@@ -75,7 +80,7 @@ operators.forEach((button) => {
 const equalsBtn = document.querySelector(".equals");
 
 equalsBtn.addEventListener("click", () => {
-    if (operator === "") return;
+    if (operator === "" || startNewNumber) return;
     secondNumber = display.textContent;
     let result = operate(operator, Number(firstNumber), Number(secondNumber));
     if (typeof result === "number") {
