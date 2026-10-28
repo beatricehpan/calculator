@@ -52,3 +52,21 @@ digits.forEach((button) => {
         }
     });
 });
+
+const operators = document.querySelectorAll(".operator");
+
+operators.forEach((button) => {
+    button.addEventListener("click", () => {
+        firstNumber = display.textContent;
+        operator = button.textContent;
+        display.textContent = "0";
+    });
+});
+
+const equalsBtn = document.querySelector(".equals");
+
+equalsBtn.addEventListener("click", () => {
+    secondNumber = display.textContent;
+    const result = operate(operator, Number(firstNumber), Number(secondNumber));
+    display.textContent = result;
+});
