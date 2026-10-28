@@ -75,7 +75,13 @@ operators.forEach((button) => {
 const equalsBtn = document.querySelector(".equals");
 
 equalsBtn.addEventListener("click", () => {
+    if (operator === "") return;
     secondNumber = display.textContent;
-    const result = operate(operator, Number(firstNumber), Number(secondNumber));
+    let result = operate(operator, Number(firstNumber), Number(secondNumber));
+    if (typeof result === "number") {
+        result = Math.round(result * 1000) / 1000;
+    }
     display.textContent = result;
+    operator = "";
+    startNewNumber = true;
 });
