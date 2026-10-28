@@ -102,3 +102,13 @@ decimalBtn.addEventListener("click", () => {
     if (display.textContent.includes(".")) return;
     display.textContent += ".";
 });
+
+const backspaceBtn = document.querySelector(".backspace");
+
+backspaceBtn.addEventListener("click", () => {
+    if (startNewNumber) return;
+    display.textContent = display.textContent.slice(0, -1);
+    if (display.textContent === "") {
+        display.textContent = "0";
+    }
+});
