@@ -57,7 +57,12 @@ const operators = document.querySelectorAll(".operator");
 
 operators.forEach((button) => {
     button.addEventListener("click", () => {
-        firstNumber = display.textContent;
+        if (operator !== "") {
+            const result = operate(operator, Number(firstNumber), Number(display.textContent));
+            firstNumber = result;
+        } else {
+            firstNumber = display.textContent;
+        }
         operator = button.textContent;
         display.textContent = "0";
     });
