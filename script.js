@@ -112,3 +112,25 @@ backspaceBtn.addEventListener("click", () => {
         display.textContent = "0";
     }
 });
+
+document.addEventListener("keydown", (event) => {
+    const key = event.key;
+    let button;
+
+    if (key >= "0" && key <= "9") {
+        button = [...digits].find((b) => b.textContent === key);
+    } else if (["+", "-", "*", "/"].includes(key)) {
+        button = [...operators].find((b) => b.textContent === key);
+    } else if (key === "Enter" || key === "=") {
+        event.preventDefault();
+        button = equalsBtn;
+    } else if (key === ".") {
+        button = decimalBtn;
+    } else if (key === "Backspace") {
+        button = backspaceBtn;
+    } else if (key === "Escape") {
+        button = clearBtn;
+    }
+
+    if (button) button.click();
+});
