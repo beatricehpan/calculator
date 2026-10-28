@@ -26,3 +26,12 @@ function operate(operator, a, b) {
             return divide(a, b);
     }
 }
+
+const display = document.querySelector(".display");
+const digits = document.querySelectorAll(".digit");
+
+digits.forEach((button) => {
+    button.addEventListener("click", () => {
+        display.textContent += button.textContent;
+    });
+});
