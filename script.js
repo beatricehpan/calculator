@@ -27,11 +27,28 @@ function operate(operator, a, b) {
     }
 }
 
+let firstNumber = "";
+let operator = "";
+let secondNumber = "";
+
+const clearBtn = document.querySelector(".clear");
+
+clearBtn.addEventListener("click", () => {
+    firstNumber = "";
+    operator = "";
+    secondNumber = "";
+    display.textContent = "0";
+});
+
 const display = document.querySelector(".display");
 const digits = document.querySelectorAll(".digit");
 
 digits.forEach((button) => {
     button.addEventListener("click", () => {
-        display.textContent += button.textContent;
+        if (display.textContent === "0") {
+            display.textContent = button.textContent;
+        } else {
+            display.textContent += button.textContent;
+        }
     });
 });
