@@ -90,3 +90,15 @@ equalsBtn.addEventListener("click", () => {
     operator = "";
     startNewNumber = true;
 });
+
+const decimalBtn = document.querySelector(".decimal");
+
+decimalBtn.addEventListener("click", () => {
+    if (startNewNumber) {
+        display.textContent = "0.";
+        startNewNumber = false;
+        return;
+    }
+    if (display.textContent.includes(".")) return;
+    display.textContent += ".";
+});
